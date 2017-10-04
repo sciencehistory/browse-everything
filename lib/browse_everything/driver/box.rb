@@ -36,7 +36,6 @@ module BrowseEverything
       # @param [String] id of the file in Box
       # @return [Array<String, Hash>]
       def link_for(id)
-        refresh!
         file = box_client.file_from_id(id)
         download_url = [Boxr::Client::FILES_URI, id, 'content'].join('/')
         auth_header = { 'Authorization' => "Bearer #{@token}" }
@@ -82,13 +81,6 @@ module BrowseEverything
                            refresh_token: box_refresh_token,
                            client_id: config[:client_id],
                            client_secret: config[:client_secret])
-        end
-
-        def box_session(token = nil, refresh_token = nil)
-          RubyBox::Session.new(client_id: config[:client_id],
-                               client_secret: config[:client_secret],
-                               access_token: token,
-                               refresh_token: refresh_token)
         end
 
         def box_auth_url
