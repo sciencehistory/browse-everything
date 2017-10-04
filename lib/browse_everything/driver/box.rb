@@ -37,7 +37,7 @@ module BrowseEverything
       # @return [Array<String, Hash>]
       def link_for(id)
         file = box_client.file_from_id(id)
-        download_url = [Boxr::Client::FILES_URI, id, 'content'].join('/')
+        download_url = box_client.download_url(file)
         auth_header = { 'Authorization' => "Bearer #{@token}" }
         extras = { auth_header: auth_header, expires: expiration_time, file_name: file.name, file_size: file.size.to_i }
         [download_url, extras]
