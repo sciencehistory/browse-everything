@@ -94,14 +94,8 @@ describe BrowseEverything::Driver::S3 do
 
       let(:contents) { provider.contents('foo/') }
 
-      context 'with a single directory' do
-        subject { contents[0] }
-
-        its(:name) { is_expected.to eq('..') }
-        specify    { is_expected.to be_container }
-      end
       context 'with a JPEG asset' do
-        subject { contents[1] }
+        subject { contents[0] }
 
         its(:name)     { is_expected.to eq('baz.jpg') }
         its(:location) { is_expected.to eq('s3:foo/baz.jpg')  }
@@ -110,7 +104,7 @@ describe BrowseEverything::Driver::S3 do
         specify        { is_expected.not_to be_container }
       end
       context 'with a PNG asset' do
-        subject { contents[2] }
+        subject { contents[1] }
 
         its(:name)     { is_expected.to eq('quux.png') }
         its(:location) { is_expected.to eq('s3:foo/quux.png') }
@@ -120,7 +114,7 @@ describe BrowseEverything::Driver::S3 do
       end
 
       context 'when retrieving the link for an asset' do
-        subject { contents[2] }
+        subject { contents[1] }
 
         before do
           object = instance_double(Aws::S3::Object)
