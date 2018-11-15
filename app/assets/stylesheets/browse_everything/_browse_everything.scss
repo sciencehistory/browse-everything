@@ -11,14 +11,6 @@
 }
 
 #browse-everything {
-  overflow-y: hidden;
-  position: fixed !important;
-  margin: 0 0 0 -37.5%;
-  left: 50%;
-  top: 10%;
-  background-color: initial;
-  width: 75%;
-
   div {
     background-color: white;
   }
@@ -35,10 +27,6 @@
     margin: 0px;
   }
 
-  .row {
-    margin: inherit;
-  }
-
   .ev-files {
     position: relative;
     overflow-x: auto;
@@ -52,9 +40,6 @@
       }
       border-top: none;
     }
-
-    &.detail {
-    }
   }
 
   .ev-container li {
@@ -65,17 +50,13 @@
     padding: 0;
   }
 
-  .ev-providers {
-    padding: 4px;
+  .row {
+    margin: inherit;
   }
 
   .ev-files {
     table {
-      width: 100%;
-      max-width: 100%;
       tr {
-        width: 100%;
-        max-width: 100%;
         td {
           white-space: nowrap;
           overflow: hidden;
@@ -88,10 +69,6 @@
   .ev-files {
     height: 50vh;
     li { @include ev-link; }
-  }
-
-  .ev-providers {
-    select { width: 30% }
   }
 
   .loading {
