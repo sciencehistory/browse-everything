@@ -11,6 +11,31 @@ Docs:
 
 Jump in: [![Slack Status](http://slack.samvera.org/badge.svg)](http://slack.samvera.org/)
 
+# FORK FOR BOOTSTRAP4
+
+See https://github.com/samvera/browse-everything/issues/246 (
+
+An experimental and unsustainable (no promise of maintenance) fork of browse-everything to get it working with bootstrap 4.
+
+* Removed bootstrap-sass (bootstrap3) dependency -- you need to include `bootstrap` gem in your app yourself.
+* removed fontawesome-rails dependency, I couldn't figure out how/if it was being used.
+* removed (BS3) 'content-columns' mixin from scss
+* Completely rewrote CSS to look right with bootstrap4, also possibly improving some things
+that could have looked better previously too.
+
+Removed the intermediate browse_everything.scss file that then imported other files -- it really complicated the scss in weird hard to debug ways, for unclear purpose. This also potentially paves the way for a browse-everything that supports bootstrap 3 or 4, you could just @import different scss files in your main application.scss -- and they'll have access to either bootstrap 3 or 4 variables/mixins, that you already imported yourself.
+
+## Changed installation directions
+
+1. Run `rails g browse_everything:install` to insert into your routes.yml and create a browse-everything.yml. (No longer generates an scss asset. Had long ago stopped generating javascript, despite generator description)
+2. Your app should have the bootstrap4 `bootstrap` gem as a dependency itself, and should have an
+application.scss that already has `@import 'bootstrap'` in it.
+3. Add `@import 'browse_everything'` after the bootstrap import.
+4. Add to your JS `//= require browse_everything` (also jquery if not already there)
+
+The previous install process had you have to do 3 and 4 _anyway_ -- the intermediary .scss file was not helping. We could conceivably write a generator to modify your application.js and application.scss, don't know if it's worth it.
+
+
 # What is BrowseEverything?
 
 This Gem allows your rails application to access user files from cloud storage.
