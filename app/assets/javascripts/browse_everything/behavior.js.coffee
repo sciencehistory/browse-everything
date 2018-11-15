@@ -6,7 +6,7 @@ $ ->
       # bootstrap 4 needs at least the inner class="modal-dialog" div, or it gets really
       # confused and can't close the dialog.
       dialog = $('<div tabindex="-1" id="browse-everything" class="ev-browser modal fade" aria-live="polite" role="dialog" aria-labelledby="beModalLabel">' +
-                   '<div class="modal-dialog" role="document"></div>' +
+                   '<div class="modal-dialog modal-lg" role="document"></div>' +
                  '</div>').hide().appendTo('body')
     dialog.modal
       backdrop: 'static'

@@ -1,3 +1,5 @@
+// CSS for bootstrap4
+
 @import "jquery.treetable";
 @import "jquery.treetable.theme.browse";
 
@@ -15,16 +17,17 @@
     background-color: white;
   }
 
+  .modal-dialog {
+    // possibly this is fixing a bootstrap bug?
+    border-radius: $modal-content-border-radius;
+  }
+
   .modal-header {
     padding: 8px;
   }
 
-  .modal-body {
-    overflow: hidden;
-  }
-
   .modal-footer {
-    margin: 0px;
+    justify-content: space-between;
   }
 
   .ev-files {
@@ -54,9 +57,29 @@
     margin: inherit;
   }
 
+  .ev-providers {
+    label {
+      font-size: $h5-font-size;
+      font-weight: $headings-font-weight;
+      line-height: $headings-line-height;
+      margin-bottom: 0;
+      @extend .mr-2;
+    }
+  }
+
   .ev-files {
+    height: calc(90vh - 150px);
+    padding: 0;
+
+    li { @include ev-link; }
+
     table {
+      margin: 0;
       tr {
+        th {
+          padding-top: 0.5em;
+          padding-bottom: 0.5em;
+        }
         td {
           white-space: nowrap;
           overflow: hidden;
@@ -64,11 +87,6 @@
         }
       }
     }
-  }
-
-  .ev-files {
-    height: 50vh;
-    li { @include ev-link; }
   }
 
   .loading {
@@ -80,6 +98,9 @@
     position: absolute;
     top: 8em;
     left: 4em;
+    &.hidden {
+      display: none;
+    }
   }
 
   // Massively large text instead of something more artistic
