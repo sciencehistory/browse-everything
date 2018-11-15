@@ -22,6 +22,7 @@ An experimental and unsustainable (no promise of maintenance) fork of browse-eve
 * removed (BS3) 'content-columns' mixin from scss
 * Completely rewrote CSS to look right with bootstrap4, also possibly improving some things
 that could have looked better previously too.
+* Removed sass-rails as a dependency, so a depending app can choose to use sassc-rails instead of the sunsetted sass-rails. Either should work.
 
 Removed the intermediate browse_everything.scss file that then imported other files -- it really complicated the scss in weird hard to debug ways, for unclear purpose. This also potentially paves the way for a browse-everything that supports bootstrap 3 or 4, you could just @import different scss files in your main application.scss -- and they'll have access to either bootstrap 3 or 4 variables/mixins, that you already imported yourself.
 
