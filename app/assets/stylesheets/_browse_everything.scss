@@ -1,4 +1,13 @@
 // CSS for bootstrap4
+//
+// Intended to be @import'ed into a sass file that already imports bootstrap,
+// becuase we use bootstrap variables.
+//
+// Important that this file begins with underscore, or the sprockets pipeline
+// will try to compile it independently even if the app doesn't reference it,
+// and it won't have access to bootstrap variables when it does -- can't
+// totally explain it, but this has gotta be an underscore-named file, you
+// still import with `@import "browse_everything"` though.
 
 @import "jquery.treetable";
 @import "jquery.treetable.theme.browse";
