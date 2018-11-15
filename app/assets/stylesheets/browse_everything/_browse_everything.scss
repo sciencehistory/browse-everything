@@ -55,10 +55,6 @@
 
     &.detail {
     }
-
-    &.list ul {
-      @include content-columns(3);
-    }
   }
 
   .ev-container li {
